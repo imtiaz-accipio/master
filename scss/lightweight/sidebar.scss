@@ -1,0 +1,56 @@
+$side_bar_width: 250px;
+$tablet_breakpoint: 767px;
+$desktop_breakpoint: 768px;
+
+.sidebar{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: -9px;
+  background-color: #fafafa;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar.open{
+  width: $side_bar_width;
+}
+.sidebarButton{
+  position: fixed;
+  right: -24px;
+  top: 50%;
+  font-size: 18px;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 0% 0% 50%;
+  background-color: #c2136a;
+  color: #fff;
+  cursor: pointer;
+  svg{
+    margin: 12px 0 0 4px;
+  }
+  svg.rotate-45{
+    $fontAwsmRotate: 45deg;
+    -webkit-transform: rotate($fontAwsmRotate);
+    -moz-transform: rotate($fontAwsmRotate);
+    -ms-transform: rotate($fontAwsmRotate);
+    -o-transform: rotate($fontAwsmRotate);
+    transform: rotate($fontAwsmRotate);
+  }
+}
+
+.sidebarButton.open{
+  right: 223px;
+}
+@media(max-width: $tablet_breakpoint){
+  .sidebarButton, .sidebar{
+    display: none;
+  }
+}

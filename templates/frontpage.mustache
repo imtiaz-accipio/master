@@ -1,0 +1,32 @@
+
+{{> theme_master/head }}
+
+<body {{{ bodyattributes }}}>
+
+{{> core/local/toast/wrapper}}
+{{> theme_master/navbar }}
+<div id="page-wrapper" class="d-print-block">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    {{>theme_master/side_bar}}
+
+    <div class="jumbotron">
+        <h1 class="display-4">Boost your career through free Online Learning</h1>
+        <p class="lead">1000's of high quality resources to help you become more effective. Since 2010, we have helped over 120 million people learn about leadership, management, personal effectiveness and much more...</p>
+
+    </div>
+          {{>theme_master/three_by_three}}
+
+    {{{ output.standard_after_main_region_html }}}
+    {{> theme_master/footer }}
+</div>
+
+</body>
+</html>
+{{#js}}
+    M.util.js_pending('theme_master/loader');
+    require(['theme_master/loader'], function() {
+    M.util.js_complete('theme_master/loader');
+    });
+{{/js}}

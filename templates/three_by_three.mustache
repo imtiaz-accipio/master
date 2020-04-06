@@ -1,0 +1,64 @@
+<div class="mainContent">
+
+    <div class="topBlockRegion d-flex flex-sm-column flex-md-row">
+
+        {{#has_top_left}}
+            <div data-region="blocks-column" class="topLeft sideblock block" aria-label="{{#str}}blocks{{/str}}">
+                {{{ top_left }}}
+            </div>
+        {{/has_top_left}}
+
+        {{#has_top_center}}
+            <div data-region="blocks-column" class="topLeft centerblock block" aria-label="{{#str}}blocks{{/str}}">
+                {{{ top_center }}}
+            </div>
+        {{/has_top_center}}
+
+        {{#has_top_right}}
+            <div data-region="blocks-column" class="topLeft sideblock block" aria-label="{{#str}}blocks{{/str}}">
+                {{{ top_right }}}
+            </div>
+        {{/has_top_right}}
+
+    </div>
+
+    <div class="mainBlockRegion d-flex flex-sm-column flex-md-row">
+        {{#has_main_left}}
+            <div data-region="blocks-column" class="topLeft sideblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ main_left }}}
+            </div>
+        {{/has_main_left}}
+
+        {{#has_main_center}}
+            <div data-region="blocks-column" class="topLeft centerblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ main_center }}}
+            </div>
+        {{/has_main_center}}
+
+        {{#has_main_right}}
+            <div data-region="blocks-column" class="topLeft sideblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ main_right }}}
+            </div>
+        {{/has_main_right}}
+    </div>
+
+    <div class="bottomBlockRegion d-flex flex-sm-column flex-md-row">
+        {{#has_bottom_left}}
+            <div data-region="blocks-column" class="topLeft sideblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ bottom_left }}}
+            </div>
+        {{/has_bottom_left}}
+
+        {{#has_bottom_center}}
+            <div data-region="blocks-column" class="topLeft centerblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ bottom_center }}}
+            </div>
+        {{/has_bottom_center}}
+
+        {{#has_bottom_right}}
+            <div data-region="blocks-column" class="topLeft sideblock block flex" aria-label="{{#str}}blocks{{/str}}">
+                {{{ bottom_right }}}
+            </div>
+        {{/has_bottom_right}}
+    </div>
+</div>

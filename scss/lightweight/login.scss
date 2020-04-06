@@ -1,0 +1,31 @@
+div#loginMainDiv{
+  float: right;
+
+  div{
+
+    div.row.justify-content-center{
+      justify-content: flex-end!important;
+      top: -49px;
+      position: relative;
+      -webkit-animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+  }
+  .btn-primary{
+    background-color: #c2136a;
+  }
+  .btn.btn-secondary{
+    color: black;
+    background-color: #c0c4c77d;
+    border-color: #6c757d;
+  }
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    right: -270px;
+  }
+  100% {
+    right: -5px;
+  }
+}

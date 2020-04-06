@@ -1,0 +1,67 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page navbar.
+}}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between row">
+
+    <div class="brandImg col-md-12 col-lg-2 d-flex justify-content-between">
+        <div class="btn holdspace"></div>
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand">
+            <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+        </a>
+
+        <li class="mobileSearch" data-toggle="collapse" data-target="#searchInput"
+            role="button" aria-expanded="false" aria-controls="searchInput">
+            {{{ output.search_icon }}}
+        </li>
+    </div>
+    <div class="mobileNavRow  col-md-12 col-lg-10 row">
+        <button class="navbar-toggler col-xs-1" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav desktopSearch col-xs-11 col-lg-4 order-lg-3">
+            <li class="nav-item search_icon" data-toggle="collapse" data-target="#searchInput"
+                role="button" aria-expanded="false" aria-controls="searchInput">
+                {{{ output.search_icon }}}
+            </li>
+            <!-- navbar_plugin_output -->
+            <li class="nav-item">
+                {{{ output.navbar_plugin_output }}}
+            </li>
+            <!-- user_menu -->
+            <li class="nav-item d-flex align-items-center">
+                {{{ output.user_menu }}}
+            </li>
+        </ul>
+    <div class="collapse navbar-collapse col-lg-8 order-lg-2 col-xs-12" id="navbarNavDropdown">
+        <ul class="navbar-nav" id="mainMenu">
+
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
+        </ul>
+    </div>
+
+    </div>
+</nav>
+
+<div class="search_input collapse" id="searchInput">
+{{{output.search_box}}}
+</div>

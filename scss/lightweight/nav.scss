@@ -1,0 +1,182 @@
+nav.navbar {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+svg{
+  cursor: pointer;
+}
+li.nav-item.d-flex.align-items-center {
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+ul.nav.desktopSearch {
+  justify-content: flex-end;
+}
+
+div.brandImg{
+  margin: 10px 0 0 0;
+}
+div.mobileNavRow{
+  margin: 0;
+  padding: 10px;
+  background: white;
+  width: 100%;
+}
+button.navbar-toggler{
+  border: none;
+}
+
+li.search_icon{
+  margin-top: 7px;
+  display: none;
+}
+li.mobileSearch{
+  list-style: none;
+}
+
+@media(max-width: 992px){
+  div.jumbotron, div.mainContent{
+    position: relative;
+  }
+
+  ul#mainMenu{
+    background-color: #303030;
+    color: #fff;
+    padding: 15px;
+    width: 300px;
+    height: 650px;
+    overflow-y: scroll;
+    position: relative;
+div.nav-item.main-nav{
+  width: 50%;
+
+}
+    a.noChildAs{
+      font-size: 13px;
+    }
+    div.menu1.showM1{
+      display: grid;
+    }
+    div.menu2{
+      a{
+        font-size: 13px;
+      }
+
+      div.menu3.collapse.show{
+        margin: 10px;
+        width: 150px;
+
+        a{
+          font-size: 11px;
+        }
+      }
+    }
+
+    svg.open{
+      transform: rotate(90deg);
+    }
+    svg.mainMenu {
+      position: relative;
+      left: 242px;
+      top: 33px;
+    }
+    svg.submenu{
+      position: relative;
+      left: 175px;
+      top: 24px;
+    }
+    a{
+      color: white;
+    }
+  }
+
+}
+@media(min-width: 992px) {
+
+  div.nav-item.main-nav{
+    svg{
+      display: none;
+    }
+  }
+
+  div.nav-item.main-nav:hover{
+
+    div.menu1{
+      position: fixed;
+      display: flex;
+      width: 100%;
+      left: 0;
+      background: #333;
+      overflow-y: hidden;
+      height: auto;
+      padding-left: 200px !important;
+      padding-right: 200px !important;
+      padding-bottom: 50px;
+      margin: 0;
+
+      div.menu2, div.col-sm-6.col-md-3{
+
+        margin-block-start: 12px!important;
+        border-left: 1px solid #3d3d3d;
+
+        a{
+          color: white;
+          font-size: 13px;
+        }
+
+        div.menu3.collapse{
+          display: grid;
+          margin-block-start: 15px!important;
+
+          a{
+            color: grey;
+            font-size: 11px;
+          }
+        }
+      }
+
+    }
+  }
+
+  li.mobileSearch{
+    display: none;
+  }
+  li.search_icon{
+    margin-top: 7px;
+    display: block;
+  }
+  div.mobileNavRow{
+    background-color: #f8f9fa;
+    height: 50px;
+  }
+}
+
+div.search_input {
+  z-index: 1031;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+      form{
+        padding: 0;
+
+        input{
+          height: 52px;
+        }
+      }
+
+
+      svg{
+        color: deeppink;
+        position: absolute;
+        right: 8px;
+        top: 14px;
+      }
+}

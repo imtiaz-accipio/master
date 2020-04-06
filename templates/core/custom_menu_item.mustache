@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    Edwiser RemUI
+    @package    theme_remui
+    @copyright  (c) 2018 WisdmLabs (https://wisdmlabs.com/)
+    @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
+}}
+{{^divider}}
+    {{#haschildren}}
+        <div class="nav-item main-nav"><i
+                onclick="function toggleIcon(svgElement) {
+                  const clickedArr = document.getElementById('mainMenu').getElementsByClassName('showM1');
+                   clickedArr.forEach(element => element.classList.remove('showM1'));
+                                            svgElement.classList.toggle('open');
+                                            document.getElementById('{{{uniqid}}}').classList.toggle('showM1');
+                                          }
+                                          toggleIcon(this)"
+                class="fa fa-angle-right mainMenu down"></i>
+
+
+            <a class="nav-link" id="drop-down-{{uniqid}}"
+               href="{{{url}}}">
+                {{text}}
+            </a>
+            <div id="{{{uniqid}}}" class="menu1 collapse row {{{text}}}" data-parent="#mainMenu">
+                {{#children}}
+                    {{#haschildren}}
+                        <div class="menu2 col-sm-6 col-md-3" id="{{{id}}}">
+                            {{^divider}}
+                                <i
+                                        onclick="function toggleIcon(svgElement) {
+
+                                         document.getElementById('{{{title}}}').classList.toggle('show');
+                                        svgElement.classList.toggle('open');
+                                          }
+                                          toggleIcon(this)"
+                                        class="fa fa-angle-right submenu down"></i>
+
+                                <a href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}
+                                >{{text}}</a>
+
+                                <div id="{{{title}}}"  class="menu3 collapse" data-parent="#{{{uniqid}}}">
+                                    {{#children}}
+                                        <a href="{{{url}}}">{{text}}</a>
+                                    {{/children}}
+                                </div>
+                            {{/divider}}
+                            {{#divider}}
+                                <div class="dropdown-divider"></div>
+                            {{/divider}}
+                        </div>
+                    {{/haschildren}}
+
+                    {{^haschildren}}
+                        <div class="col-sm-6 col-md-3">
+                            {{^divider}}
+                                <a class="noChildAs" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{text}}</a>
+                            {{/divider}}
+                            {{#divider}}
+                                <div class="dropdown-divider"></div>
+                            {{/divider}}
+                        </div>
+                    {{/haschildren}}
+                {{/children}}
+            </div>
+        </div>
+    {{/haschildren}}
+    {{^haschildren}}
+        <div class="nav-item"><a class="nav-link" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{text}}</a></div>
+    {{/haschildren}}
+{{/divider}}
+{{#js}}
+
+{{/js}}
