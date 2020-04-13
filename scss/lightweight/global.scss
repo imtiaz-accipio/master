@@ -1,0 +1,29 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url([[font:theme|open-sans-v17-latin-regular.eot]); /* IE9 Compat Modes */
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+  url([[font:theme|open-sans-v17-latin-regular.eot?#iefix]]) format('embedded-opentype'), /* IE6-IE8 */
+  url([[font:theme|open-sans-v17-latin-regular.woff2]]) format('embedded-opentype'), /* IE6-IE8 */
+  url([[font:theme|open-sans-v17-latin-regular.woff]]) format('embedded-opentype'), /* IE6-IE8 */
+  url([[font:theme|open-sans-v17-latin-regular.ttf]]) format('embedded-opentype'), /* IE6-IE8 */
+  url([[font:theme|open-sans-v17-latin-regular.svg#OpenSans]]) format('embedded-opentype'), /* IE6-IE8 */
+}
+
+main.main {
+  position: relative;
+  height: auto;
+}
+
+.container{
+  @media (min-width: 1440px) {
+    max-width: 1400px;
+  }
+}

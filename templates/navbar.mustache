@@ -18,25 +18,27 @@
     Page navbar.
 }}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between row">
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between row container-fluid">
+
 
     <div class="brandImg col-md-12 col-lg-2 d-flex justify-content-between">
-        <div class="btn holdspace"></div>
         <a href="{{{ config.wwwroot }}}" class="navbar-brand">
-            <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+            <img src="https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/logo/0/Businesballs_NEW.svg" alt="{{sitename}}">
         </a>
-
-        <li class="mobileSearch" data-toggle="collapse" data-target="#searchInput"
-            role="button" aria-expanded="false" aria-controls="searchInput">
+        <div class="mobileSearch" data-toggle="collapse" data-target="#searchInput"
+             role="button" aria-expanded="false" aria-controls="searchInput">
             {{{ output.search_icon }}}
-        </li>
+        </div>
     </div>
+
+
+
     <div class="mobileNavRow  col-md-12 col-lg-10 row">
         <button class="navbar-toggler col-xs-1" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="nav desktopSearch col-xs-11 col-lg-4 order-lg-3">
-            <li class="nav-item search_icon" data-toggle="collapse" data-target="#searchInput"
+            <li id="search_icon" class="nav-item search_icon" data-toggle="collapse" data-target="#searchInput"
                 role="button" aria-expanded="false" aria-controls="searchInput">
                 {{{ output.search_icon }}}
             </li>
@@ -49,19 +51,18 @@
                 {{{ output.user_menu }}}
             </li>
         </ul>
-    <div class="collapse navbar-collapse col-lg-8 order-lg-2 col-xs-12" id="navbarNavDropdown">
-        <ul class="navbar-nav" id="mainMenu">
+        <div class="collapse navbar-collapse col-lg-8 order-lg-2 col-xs-12" id="navbarNavDropdown">
+            <ul class="navbar-nav" id="mainMenu">
 
-            <!-- custom_menu -->
-            {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
-        </ul>
+                <!-- custom_menu -->
+                {{{ output.custom_menu }}}
+                <!-- page_heading_menu -->
+                {{{ output.page_heading_menu }}}
+            </ul>
+        </div>
     </div>
 
+    <div class="search_input collapse" id="searchInput">
+        {{{output.search_box}}}
     </div>
 </nav>
-
-<div class="search_input collapse" id="searchInput">
-{{{output.search_box}}}
-</div>

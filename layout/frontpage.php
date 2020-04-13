@@ -24,11 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once('common.php');
+
 global $OUTPUT;
 
-require_once('three_by_three.php');
-require_once('side_bar.php');
-
-echo $OUTPUT->main_content();
 echo $OUTPUT->render_from_template('theme_master/frontpage', $templatecontext);
 

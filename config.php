@@ -67,6 +67,30 @@ $THEME->layouts = [
             'bottom-right', 'side-pre')
     ),
 
+    'coursecategory'=> array(
+        'file' => 'coursecategory.php',
+        'regions' => array( 'page-top-left', 'page-pre',
+            'page-top-right', 'page-left','center-pre',
+            'page-right','bottom-left', 'center-post',
+            'bottom-right', 'side-pre')
+    ),
+
+    'course'=> array(
+        'file' => 'course.php',
+        'regions' => array( 'page-top-left', 'page-pre',
+            'page-top-right', 'page-left','center-pre',
+            'page-right','bottom-left', 'center-post',
+            'bottom-right', 'side-pre', 'banner')
+    ),
+
+    'incourse'=> array(
+        'file' => 'incourse.php',
+        'regions' => array( 'page-top-left', 'page-pre',
+            'page-top-right', 'page-left','center-pre',
+            'page-right','bottom-left', 'center-post',
+            'bottom-right', 'side-pre')
+    ),
+
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
         'file' => 'columns1.php',

@@ -29,11 +29,16 @@
             </div>
         {{/has_main_left}}
 
-        {{#has_main_center}}
-            <div data-region="blocks-column" class="topLeft centerblock block flex" aria-label="{{#str}}blocks{{/str}}">
-                {{{ main_center }}}
-            </div>
-        {{/has_main_center}}
+        <div data-region="blocks-column" class="topLeft centerblock block flex" aria-label="{{#str}}blocks{{/str}}">
+            {{{ main_center }}}
+            {{#hasregionmainsettingsmenu}}
+                <div class="region_main_settings_menu_proxy"></div>
+            {{/hasregionmainsettingsmenu}}
+            {{{ output.course_content_header }}}
+            {{{ output.main_content }}}
+            {{{ output.activity_navigation }}}
+            {{{ output.course_content_footer }}}
+        </div>
 
         {{#has_main_right}}
             <div data-region="blocks-column" class="topLeft sideblock block flex" aria-label="{{#str}}blocks{{/str}}">

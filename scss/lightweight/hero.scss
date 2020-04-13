@@ -1,10 +1,52 @@
 .jumbotron {
+  display: flex;
   color: white;
   width: 100%;
-  height: 500px;
-  background-image: url(https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/slideimage/0/home.jpg);
+  min-height: 400px;
   margin: 0;
   background-size: cover;
-  background-color: #c2136ac4;
-  background-blend-mode: soft-light;
+  background-image: linear-gradient(to right,#c2136aaa,#ee4d9daa), url(https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/slideimage/0/home.jpg);
+  padding: 0;
+  border-radius: 0;
+  @media (max-width: 1024px){
+    min-height: 300px;
+  }
+  @media (max-width: 768px){
+    min-height: 200px;
+  }
+}
+
+header .header-caption{
+  margin: auto;
+  h1 {
+    font-size: 2.572rem;
+    font-weight: 400;
+    margin-bottom: 11px;
+  }
+  p {
+    @media (max-width: 768px){
+      display: none;
+    }
+  }
+}
+
+.header-caption-inner{
+  max-width: 50vw;
+  @media (max-width: 1024px){
+    max-width: 70vw;
+  }
+  @media (max-width: 768px){
+    max-width: 100vw;
+  }
+}
+
+.breadcrumb{
+  position: absolute;
+  top: 360px;
+  background: none;
+  padding-left: 0;
+}
+
+.breadcrumb, .breadcrumb a, .breadcrumb li:before, .page-title{
+  color: white!important;
 }

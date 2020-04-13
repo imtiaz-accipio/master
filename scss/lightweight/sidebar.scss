@@ -8,11 +8,11 @@ $desktop_breakpoint: 768px;
   position: fixed;
   z-index: 2;
   top: 0;
-  right: -9px;
+  right: 0;
   background-color: #fafafa;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
 .sidebar.open{
@@ -29,7 +29,7 @@ $desktop_breakpoint: 768px;
   z-index: 1;
   width: 40px;
   height: 40px;
-  border-radius: 50% 0% 0% 50%;
+  border-radius: 20px 0% 0% 20px;
   background-color: #c2136a;
   color: #fff;
   cursor: pointer;
@@ -47,8 +47,10 @@ $desktop_breakpoint: 768px;
 }
 
 .sidebarButton.open{
-  right: 223px;
+  right: 241px;
+  width: 24px;
 }
+
 @media(max-width: $tablet_breakpoint){
   .sidebarButton, .sidebar{
     display: none;
