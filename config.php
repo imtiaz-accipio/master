@@ -26,6 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
+
 $THEME->name = 'master';
 $THEME->sheets = [];
 $THEME->editor_sheets = [];
@@ -149,3 +150,4 @@ $THEME->precompiledcsscallback = 'theme_master_get_precompiled_css';
 $THEME->yuicssmodules = array();
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = '';
+$THEME->iconsystem = '\\theme_master\\output\\custom_font_awesome';

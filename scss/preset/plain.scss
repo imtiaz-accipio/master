@@ -38,6 +38,7 @@ $cyan:    #5bc0de !default;
 $primary:       $blue !default;
 $secondary:     $gray-800 !default;
 $success:       $green !default;
+$base: $gray-900!default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
@@ -76,8 +77,8 @@ $card-group-margin: .25rem;
 $theme-colors: () !default;
 $theme-colors: map-merge((
         primary: $primary,
-        secondary: $gray-400,
         success: $success,
+        base: $base,
         info: $info,
         warning: $orange,
         danger: $danger,
@@ -86,10 +87,10 @@ $theme-colors: map-merge((
 ), $theme-colors);
 // stylelint-enable
 
-// Import FontAwesome.
+//// Import FontAwesome.
 @import "fontawesome";
-
-// Import All of Bootstrap
+//
+//// Import All of Bootstrap
 @import "bootstrap";
 
 // Import Core moodle CSS

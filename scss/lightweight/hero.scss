@@ -1,33 +1,39 @@
-.jumbotron {
+.header-jumbotron {
   display: flex;
   color: white;
   width: 100%;
   min-height: 400px;
   margin: 0;
   background-size: cover;
-  background-image: linear-gradient(to right,#c2136aaa,#ee4d9daa), url(https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/slideimage/0/home.jpg);
   padding: 0;
   border-radius: 0;
   @media (max-width: 1024px){
     min-height: 300px;
   }
-  @media (max-width: 768px){
-    min-height: 200px;
-  }
 }
 
 header .header-caption{
   margin: auto;
+  position: relative;
+  @media(max-width: 675px){
+    margin-left: 0;
+  }
   h1 {
     font-size: 2.572rem;
     font-weight: 400;
     margin-bottom: 11px;
   }
   p {
+    margin-top: 20px;
     @media (max-width: 768px){
       display: none;
     }
   }
+}
+
+span.page-title, h1.page-title{
+font-size: 30px!important;
+position: relative;
 }
 
 .header-caption-inner{
@@ -40,11 +46,17 @@ header .header-caption{
   }
 }
 
-.breadcrumb{
-  position: absolute;
-  top: 360px;
+ol.breadcrumb{
+  position: relative;
+  top: 100px;
   background: none;
   padding-left: 0;
+
+  @media(max-width: 991px){
+    top: 30px;
+    background: none;
+    padding-left: 0;
+  }
 }
 
 .breadcrumb, .breadcrumb a, .breadcrumb li:before, .page-title{

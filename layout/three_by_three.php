@@ -1,7 +1,7 @@
 <?php
 
 defined('MOODLE_INTERNAL') || die();
-global $OUTPUT;
+global $OUTPUT, $PAGE;
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
@@ -31,6 +31,38 @@ $has_bottom_center = strpos($bottom_center, 'data-block=') !== false;
 
 $bottom_right = $OUTPUT->blocks('bottom-right');
 $has_bottom_right = strpos($bottom_right, 'data-block=') !== false;
+
+$output = $this->page->get_renderer('block_google_cse');
+$this->page->requires->js_call_amd('block_google_cse/searchbar', 'init');
+$data = new \block_google_cse\output\searchbar(new moodle_url("/blocks/google_cse/search.php"));
+
+function metaChecker(){
+    global $PAGE;
+    $get_meta_function_return = \theme_master\output\core_renderer::get_meta('meta');
+    $empty_meta_key_words = '<meta name="keywords" content="">';
+
+
+    //Check if get_meta() has opening quoation " for content (so contains content)
+    // if it does pass normal get_meta()
+    if(strpos($get_meta_function_return, 'keywords content="')){
+        $item = $get_meta_function_return;
+        }
+
+    // Check if get_meta() has no '<meta name="keywords" content=""> element,
+    // if no meta element, create and pass meta keyword element
+    else if(strpos($get_meta_function_return, '<meta name="keywords" content="') === false){
+        $item = $get_meta_function_return . '<meta name="keywords" content="'. $PAGE->title . '">';
+    }
+
+    // some get_meta() have '<meta name="keywords" content> element with no content
+    //replace the empty meta element with content
+    else {
+         $item = str_replace($empty_meta_key_words, '<meta name="keywords" content="'. $PAGE->title . '">', $get_meta_function_return );
+        }
+    return $item;
+}
+
+
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -62,5 +94,12 @@ $templatecontext = [
     'has_bottom_center'=>$has_bottom_center,
 
     'bottom_right'=>$bottom_right,
-    'has_bottom_right'=>$has_bottom_right
+    'has_bottom_right'=>$has_bottom_right,
+
+//    'canonical' => \theme_master\output\core_renderer::get_meta('cronical'),
+//    'metatag' => metaChecker(),
+    'metatag' =>\theme_master\output\core_renderer::get_a1_rank(),
+
+    'searchbar' => $output->render($data)
+
 ];

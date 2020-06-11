@@ -1,0 +1,14 @@
+#btnToTop{
+  display: none;
+  border: none;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 6px 10px rgba(0,0,0,.15);
+  font-size: 17px;
+  text-align: center;
+  position: fixed;
+  right: 2%;
+  bottom: 8%;
+  z-index: 10;
+}

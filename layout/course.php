@@ -26,7 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once('common.php');
 
-global $OUTPUT;
+global $OUTPUT, $PAGE, $DB;
 
+$courseRecords = $DB->get_records('course', array(), $sort = '', $fields = '*');
+
+$PAGE->set_heading($PAGE->course->shortname);
 echo $OUTPUT->render_from_template('theme_master/columns3', $templatecontext);
 

@@ -24,9 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once('common.php');
-
 global $OUTPUT;
+require_once('common.php');
 
 echo $OUTPUT->render_from_template('theme_master/frontpage', $templatecontext);
 

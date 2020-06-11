@@ -1,31 +1,56 @@
-div#loginMainDiv{
-  float: right;
+.pagelayout-login #region-main {
+  border: 0;
+  background-color: inherit;
+  height: 100%;
+}
+div#page{
+  padding: 0;
+  overflow-x: hidden;
+}
 
-  div{
+@keyframes slide {
+  0%   {right:-150px;}
+  100% {right:0px;}
+}
+div.mainLoginDiv{
+  width: 503px;
+  padding: 100px 60px 180px;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  height: auto;
+  min-height: 100%;
+  z-index: 1;
+  background: white;
+  animation-name: slide;
+  animation-duration: 1.3s;
 
-    div.row.justify-content-center{
-      justify-content: flex-end!important;
-      top: -49px;
-      position: relative;
-      -webkit-animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-      animation: slide-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
+  form{
+    margin: 10px 0 20px 0;
   }
-  .btn-primary{
-    background-color: #c2136a;
+
+  div.img-fluid{
+    margin-bottom: 50px;
   }
-  .btn.btn-secondary{
-    color: black;
-    background-color: #c0c4c77d;
-    border-color: #6c757d;
+
+  div.forgetpass{
+    font-size: 13px;
+  }
+  div.signUp{
+    margin-bottom: 20px;
+  }
+
+  h6{
+    font-weight: 400;
+    line-height: 1.2;
+    color: #37474f;
   }
 }
 
-@-webkit-keyframes slide-left {
-  0% {
-    right: -270px;
-  }
-  100% {
-    right: -5px;
+@media only screen and (max-width: 600px){
+
+  div.mainLoginDiv{
+    width: 100%;
+    padding: 50px 30px 180px;
   }
 }

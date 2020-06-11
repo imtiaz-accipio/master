@@ -51,11 +51,12 @@
 {{> theme_master/common_start }}
 
 <header id="page-header">
-    <div class="jumbotron">
+    <div class="header-jumbotron jumbotron">
         <div class="header-caption container">
             <div class="header-caption-inner">
-                <h1>Boost your career through free Online Learning</h1>
+                <span class="page-title">Boost your career through free Online Learning</span>
                 <p>1000's of high quality resources to help you become more effective. Since 2010, we have helped over 120 million people learn about leadership, management, personal effectiveness and much more...</p>
+                {{{searchbar}}}
             </div>
         </div>
         {{{ bannerblocks }}}
@@ -74,3 +75,4 @@
     M.util.js_complete('theme_master/loader');
     });
 {{/js}}
+

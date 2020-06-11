@@ -19,6 +19,8 @@ $templatecontext = [
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
     'bannerblocks' => $bannerblockshtml
+
+
 ];
 
 require_once('three_by_three.php');

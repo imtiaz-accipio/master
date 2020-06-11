@@ -3,10 +3,9 @@ $tablet_breakpoint: 767px;
 $desktop_breakpoint: 768px;
 
 .sidebar{
-  height: 100%;
   width: 0;
   position: fixed;
-  z-index: 2;
+  z-index: 100;
   top: 0;
   right: 0;
   background-color: #fafafa;
@@ -16,6 +15,7 @@ $desktop_breakpoint: 768px;
 }
 
 .sidebar.open{
+  height: 100%;
   width: $side_bar_width;
 }
 .sidebarButton{
@@ -30,7 +30,6 @@ $desktop_breakpoint: 768px;
   width: 40px;
   height: 40px;
   border-radius: 20px 0% 0% 20px;
-  background-color: #c2136a;
   color: #fff;
   cursor: pointer;
   svg{

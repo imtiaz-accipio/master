@@ -44,11 +44,34 @@ function theme_master_css_tree_post_processor($tree, $theme) {
 function theme_master_get_extra_scss($theme) {
     $content = '';
     $imageurl = $theme->setting_file_url('backgroundimage', 'backgroundimage');
-
+    $login_image_url = $theme->setting_file_url('loginbackgroundimage', 'loginbackgroundimage');
+    $logo_image_url = $theme->setting_file_url('logo_image', 'logo_image');
+    $banner_image_url = $theme->setting_file_url('banner_image', 'banner_image');
     // Sets the background image, and its settings.
     if (!empty($imageurl)) {
         $content .= 'body { ';
         $content .= "background-image: url('$imageurl'); background-size: cover;";
+        $content .= ' }';
+    }
+    // Sets the background image of the login page.
+    if(!empty($login_image_url)){
+        $content .= 'div.loginBackgroundImageDiv { ';
+        $content .= "background-image: url('$login_image_url'); background-size: cover;";
+        $content .= ' }';
+    }
+    // Sets the logo
+    if(!empty($logo_image_url)){
+        $content .= 'div.navBrandImgElement { ';
+        $content .= "background: url('$logo_image_url');";
+        $content .= "background-repeat: no-repeat;";
+        $content .= "background-size: auto;";
+        $content .= "background-position-y: center;";
+        $content .= ' }';
+    }
+    // Sets the banner
+    if(!empty($banner_image_url)){
+        $content .= 'div.header-jumbotron { ';
+        $content .= "background-image:linear-gradient(to right, #c2136aaa,#ee4d9daa),url('$banner_image_url');";
         $content .= ' }';
     }
 
@@ -69,7 +92,12 @@ function theme_master_get_extra_scss($theme) {
  * @return bool
  */
 function theme_master_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage')) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage'
+            || $filearea === 'loginbackgroundimage' || $filearea === 'logo_image' || $filearea === 'banner_image'
+            || $filearea === 'fav_icon_image')) {
+
+
+
         $theme = theme_config::load('master');
         // By default, theme files must be cache-able by both browsers and proxies.
         if (!array_key_exists('cacheability', $options)) {
@@ -132,6 +160,8 @@ function theme_master_get_pre_scss($theme) {
     $configurable = [
         // Config key => [variableName, ...].
         'brandcolor' => ['primary'],
+        'secondary_color'=>['secondary'],
+        'base_color' => ['base']
     ];
 
     // Prepend variables first.

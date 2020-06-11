@@ -1,0 +1,21 @@
+<button class="btn-primary" id="btnToTop" title="Go to top" onclick="document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;">
+    <i class="far fa-chevron-up"></i>
+</button>
+
+{{#js}}
+    //Get the button
+    var mybutton = document.getElementById("btnToTop");
+
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    mybutton.style.display = "block";
+    } else {
+    mybutton.style.display = "none";
+    }
+    }
+
+{{/js}}

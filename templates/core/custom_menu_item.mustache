@@ -21,10 +21,8 @@
     {{#haschildren}}
         <div class="nav-item main-nav"><i
                 onclick="function toggleIcon(svgElement) {
-                  const clickedArr = document.getElementById('mainMenu').getElementsByClassName('showM1');
-                   clickedArr.forEach(element => element.classList.remove('showM1'));
-                                            svgElement.classList.toggle('open');
-                                            document.getElementById('{{{uniqid}}}').classList.toggle('showM1');
+                    svgElement.classList.toggle('open');
+                    document.getElementById('{{{uniqid}}}').classList.toggle('showM1');
                                           }
                                           toggleIcon(this)"
                 class="fa fa-angle-right mainMenu down"></i>
@@ -50,10 +48,10 @@
 
                                 <a href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}
                                 >{{text}}</a>
-
-                                <div id="{{{title}}}"  class="menu3 collapse" data-parent="#{{{uniqid}}}">
+                                <br>
+                                <div id="{{{title}}}"  class="menu3 collapse row" data-parent="#{{{uniqid}}}">
                                     {{#children}}
-                                        <a href="{{{url}}}">{{text}}</a>
+                                        <a class="col-12" href="{{{url}}}">{{text}}</a>
                                     {{/children}}
                                 </div>
                             {{/divider}}

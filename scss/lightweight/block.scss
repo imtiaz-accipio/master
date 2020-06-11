@@ -25,7 +25,7 @@ $side_block_size: 250px;
   }
 }
 
-@media(min-width: $desktop_breakpoint){
+@media(min-width: 992px){
   .sideblock{
 
     aside {
@@ -33,3 +33,22 @@ $side_block_size: 250px;
     }
   }
 }
+
+//admin block icon fixes
+.block_settings .block_tree .tree_item.branch[aria-expanded="false"]:before {
+  font-family: FontAwesome !important;
+  content: '\f054';
+  font-weight: 900;
+  margin-right: 10px;
+  font-size: 10px;
+  color: grey;
+}
+.block_settings .block_tree .tree_item.branch[aria-expanded="true"]:before {
+  font-family: FontAwesome !important;
+  content: '\f078';
+  font-weight: 900;
+  margin-right: 10px;
+  font-size: 10px;
+  color: grey;
+}
+//admin block icon fixes

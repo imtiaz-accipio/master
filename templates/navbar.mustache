@@ -20,18 +20,15 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between row container-fluid">
 
+    <a href="{{{ config.wwwroot }}}" class="navbar-brand">
+    <div class="brandImg navBrandImgElement col-md-12 col-lg-2 d-flex justify-content-between">
 
-    <div class="brandImg col-md-12 col-lg-2 d-flex justify-content-between">
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand">
-            <img src="https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/logo/0/Businesballs_NEW.svg" alt="{{sitename}}">
-        </a>
-        <div class="mobileSearch" data-toggle="collapse" data-target="#searchInput"
-             role="button" aria-expanded="false" aria-controls="searchInput">
-            {{{ output.search_icon }}}
-        </div>
     </div>
-
-
+    </a>
+    <div class="mobileSearch" data-toggle="collapse" data-target="#searchInput"
+         role="button" aria-expanded="false" aria-controls="searchInput">
+        {{{ output.search_icon }}}
+    </div>
 
     <div class="mobileNavRow  col-md-12 col-lg-10 row">
         <button class="navbar-toggler col-xs-1" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,6 +60,11 @@
     </div>
 
     <div class="search_input collapse" id="searchInput">
-        {{{output.search_box}}}
+        {{{searchbar}}}
+        <div id="search_close" class="nav-item search_close" data-toggle="collapse" data-target="#searchInput"
+            role="button" aria-expanded="false" aria-controls="searchInput">
+            <i class="text-primary fal fa-times-circle"></i>
+        </div>
     </div>
 </nav>
+{{> theme_master/button_to_top }}

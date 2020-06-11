@@ -3,11 +3,52 @@ nav.navbar {
   height: 100px;
   max-height: 100px;
   position: sticky;
-  z-index: 3;
+  z-index: 1000;
   top: 0;
   margin: 0;
   padding: 0;
+
+  a.navbar-brand{
+    width: 100%;
+    padding-top: 0;
+    margin-left: 10px;
+  }
 }
+
+[data-region=right-hand-drawer].drawer{
+  top: 0px;
+  height: 100vh;
+  z-index: 100;
+  outline: 0;
+}
+
+div.message-app {
+  background: white;
+
+  input.form-control.border-left-0{
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  span.input-group-text.pr-2.bg-white{
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+  button{
+    background: white!important;
+  }
+
+  div.section.border-0.card > div{
+    border: none;
+  }
+  div.border-bottom{
+    border: none!important;
+  }
+  .header-container.position-relative{
+    margin-top: 100px;
+  }
+}
+
+
 
 svg{
   cursor: pointer;
@@ -19,6 +60,15 @@ li.nav-item.d-flex.align-items-center {
 
 ul.nav.desktopSearch {
   justify-content: flex-end;
+
+    li.usermenu.nav-item.dropdown a.nav-link{
+      padding-top: 0px;
+      display: initial;
+    }
+
+    li a,#search_icon{
+      color: grey;
+    }
 }
 
 div.brandImg{
@@ -36,6 +86,7 @@ div.mobileNavRow{
 }
 button.navbar-toggler{
   border: none;
+  outline: 0;
 }
 
 li.search_icon{
@@ -44,11 +95,25 @@ li.search_icon{
 }
 
 .mobileSearch {
-  position: fixed;
+  position: absolute;
   right: 15px;
+  top: 17px;
+
+    svg{
+      color: grey;
+    }
+}
+@media(max-width: 335px) {
+
+  div.message-app{
+    .header-container.position-relative{
+      margin-top: 150px;
+    }
+  }
 }
 
 @media(max-width: 991px){
+
   div.jumbotron, div.mainContent{
     position: relative;
   }
@@ -76,16 +141,22 @@ div.nav-item.main-nav{
       display: grid;
     }
     div.menu2{
+      padding-right: 0;
+      max-width: initial;
+
       a{
         font-size: 13px;
+        color: white;
       }
 
       div.menu3.collapse.show{
         margin: 10px;
         width: 150px;
+        display: grid;
 
         a{
           font-size: 11px;
+          color: grey;
         }
       }
     }
@@ -101,7 +172,6 @@ div.nav-item.main-nav{
     svg.submenu{
       position: relative;
       left: 175px;
-      top: 24px;
     }
     a{
       color: white;
@@ -137,6 +207,7 @@ div.nav-item.main-nav{
         margin-block-start: 12px!important;
         border-left: 1px solid #3d3d3d;
 
+
         a{
           color: white;
           font-size: 13px;
@@ -144,10 +215,11 @@ div.nav-item.main-nav{
 
         div.menu3.collapse{
           display: grid;
+          display: -ms-inline-flexbox;
           margin-block-start: 15px!important;
 
           a{
-            color: grey;
+            color: #ffffff8a;
             font-size: 11px;
           }
         }
@@ -175,6 +247,10 @@ div.search_input {
   top: 0;
   width: 100%;
 
+  #___gcse_0{
+    width: 100%;
+  }
+
       form{
         padding: 0;
 
@@ -184,16 +260,21 @@ div.search_input {
       }
 
 
-      svg{
-        color: deeppink;
+      svg.fa-times-circle{
         position: absolute;
-        right: 8px;
-        top: 14px;
+        right: 49px;
+        top: 15px;
+        font-size: 17px;
       }
 }
 
 .text-center {
   text-align: center!important;
+}
+.dropdown-menu-right {
+  right: 0;
+  left: -68px;
+  width: 290px!important;
 }
 
 .navbar-brand {
@@ -274,10 +355,13 @@ nav.bg-light {
   right: 0;
 }
 
-.popover-region-notifications a, .navbar-light .navbar-nav .nav-link, li.nav-item.search_icon, .usermenu a, .nav-item a {
-  color: #526069!important;
-}
-
 li.nav-item {
   margin: auto 0;
 }
+//message icon
+div.popover-region.collapsed a svg.svg-inline--fa.fa-comment.fa-w-16.icon.fa-fw{
+color: grey;
+  padding: 8px 0px 6px 0px;
+}
+//message icon
+

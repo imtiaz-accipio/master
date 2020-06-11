@@ -1,0 +1,75 @@
+// imported from css of previous development. no scss optimisation made
+
+.socialMediaShare {
+  position: fixed;
+  left: 0;
+  top: 150px;
+  z-index: 100;
+
+  @media only screen and (max-width: 675px){
+    position: sticky;
+    display: inline-flex;
+    bottom: 0;
+    z-index: 100;
+    margin-left: calc((100% - 250px)/2);
+    margin-right: calc((100% - 250px)/2);
+  }
+
+}
+
+.shareContainer {
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+svg.shareIcons{
+  color: white;
+  display: inline-block;
+  line-height: 52px;
+  font-size: 23px;
+  margin-top: 10px;
+}
+
+.faceBookShareContainer{
+  background: #4267b2;
+  transition: 0.3s ease-in;
+}
+.faceBookShareContainer:hover{
+  min-width: 80px;
+  max-width: 80px;
+}
+.twitterShareContainer{
+  background: #1c9deb;
+  transition: 0.3s ease-in;
+}
+.twitterShareContainer:hover{
+  min-width: 80px;
+  max-width: 80px;
+}
+.linkedInShareContainer{
+  background: #0271ae;
+  transition: 0.3s ease-in;
+}
+.linkedInShareContainer:hover{
+  min-width: 80px;
+  max-width: 80px;
+}
+.printShareContainer{
+  background: #6acf13;
+  transition: 0.3s ease-in;
+}
+.printShareContainer:hover{
+  min-width: 80px;
+  max-width: 80px;
+}
+.mailShareContainer{
+  background: grey;
+  transition: 0.3s ease-in;
+}
+.mailShareContainer:hover{
+  min-width: 80px;
+  max-width: 80px;
+}

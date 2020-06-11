@@ -65,11 +65,61 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    // Variable $body-color.
+    // Login Background image setting.
+    $name = 'theme_master/loginbackgroundimage';
+    $title = get_string('loginbackgroundimage', 'theme_master');
+    $description = get_string('login_backgroundimage_desc', 'theme_master');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'loginbackgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Logo image setting.
+    $name = 'theme_master/logo_image';
+    $title = get_string('logo_image', 'theme_master');
+    $description = get_string('logo_image_desc', 'theme_master');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo_image');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Banner image setting.
+    $name = 'theme_master/banner_image';
+    $title = get_string('banner_image', 'theme_master');
+    $description = get_string('banner_image_desc', 'theme_master');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'banner_image');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Fav Icon setting.
+    $name = 'theme_master/fav_icon_image';
+    $title = get_string('fav_icon_image', 'theme_master');
+    $description = get_string('fav_icon_image_desc', 'theme_master');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fav_icon_image');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Variable primary-color.
     // We use an empty default value because the default colour should come from the preset.
     $name = 'theme_master/brandcolor';
     $title = get_string('brandcolor', 'theme_master');
     $description = get_string('brandcolor_desc', 'theme_master');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Variable secondary color.
+    // We use an empty default value because the default colour should come from the preset.
+    $name = 'theme_master/secondary_color';
+    $title = get_string('secondary_color', 'theme_master');
+    $description = get_string('secondary_color_desc', 'theme_master');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Variable base color.
+    // We use an empty default value because the default colour should come from the preset.
+    $name = 'theme_master/base_color';
+    $title = get_string('base_color', 'theme_master');
+    $description = get_string('base_color_desc', 'theme_master');
     $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);

@@ -1,0 +1,59 @@
+a.page-link.mx-sm-5, a.page-link {
+  margin: 15px;
+  border: none;
+  color: #000000b5;
+}
+
+@media only screen and (max-width: 600px) {
+  a.page-link.mx-sm-5, a.page-link {
+    margin: 1px;
+  }
+}
+ul.blogUL{
+  list-style: none;
+
+li.widget{
+  padding: 0;
+
+  div.cover.overlay.overlay-hover:hover{
+    img{
+      transform: scale(1.2);
+    }
+    div.overlay-panel.overlay-fade.overlay-background.overlay-background-fixed.text-center.vertical-align{
+      background: rgba(0,0,0,.7);
+
+    }
+  }
+    div.cover.overlay.overlay-hover{
+      z-index: 1;
+      overflow: hidden;
+
+        img{
+          width: 100%;
+          transition-timing-function: ease-out;
+          transition-duration: .3s;
+        }
+
+        div.overlay-panel.overlay-fade.overlay-background.overlay-background-fixed.text-center.vertical-align{
+          position: absolute;
+          top: 0px;
+          z-index: 3;
+          background: rgba(0,0,0,.5);
+          color: rgba(255, 255, 255, 0.71);
+          height: 100%;
+          width: 100%;
+          padding: 20px;
+          transition-timing-function: ease-out;
+          transition-duration: .3s;
+        }
+    }
+
+
+}
+  a.btn.btn-primary.waves-effect.waves-light {
+    margin-bottom: 17px;
+  }
+  .widget-time.widget-divider {
+    margin-bottom: 15px;
+  }
+}

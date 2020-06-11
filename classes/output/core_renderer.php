@@ -52,6 +52,7 @@ defined('MOODLE_INTERNAL') || die;
  */
 
 class core_renderer extends \core_renderer {
+    /** @var custom_menu_item language The language menu if created */
 
     /**
      * We don't like these...
@@ -82,13 +83,13 @@ class core_renderer extends \core_renderer {
 
         $imageurl = $this->course_header_imageurl($PAGE->course);
 
-        $leftcolour   = '#c2136aaa';
-        $rightcolour   = '#ee4d9daa';
+//        $leftcolour   = '#c2136aaa';
+//        $rightcolour   = '#ee4d9daa';
 
         $html .= "
                 <style>
                     #page-header{
-                        background-image: linear-gradient(to right, $leftcolour,$rightcolour), url('$imageurl');
+                        background-image: linear-gradient(to right,rgba(194,19,106,.67),rgba(238,77,157,.67)), url('$imageurl');
                         height: 300px;
                         background-size: cover;
                         background-position: center;
@@ -102,7 +103,7 @@ class core_renderer extends \core_renderer {
     }
 
     public function render_context_header(\context_header $contextheader){
-        global $PAGE;
+        global $PAGE, $CFG;
 
         // All the html stuff goes here.
         $html = '';
@@ -118,11 +119,12 @@ class core_renderer extends \core_renderer {
             $headings = $this->heading($contextheader->heading, $contextheader->headinglevel, 'page-title');
         }
 
-        if ($PAGE->activityname == 'accipioaccelerate') {
-            $headings = str_replace('<h1', '<span', $headings);
-            $headings = str_replace('</h1', '</span', $headings);
-        }
-
+//        if (($PAGE->activityname == 'accipioaccelerate') || fnmatch($CFG->wwwroot . '/quiz/*/', $PAGE->url)) {
+//            $headings = str_replace('<h1', '<span', $headings);
+//            $headings = str_replace('</h1', '</span', $headings);
+//        }
+        $headings = str_replace('<h1', '<span', $headings);
+        $headings = str_replace('</h1', '</span', $headings);
         $html .= "<div class='float-left mr-10'>";
         $html .= $headings;
 
@@ -193,6 +195,15 @@ class core_renderer extends \core_renderer {
         return $html;
     }
 
+    public function fav_Icon(){
+        $favIconUrl = $this->page->theme->setting_file_url('fav_icon_image', 'fav_icon_image');
+        if(!empty($favIconUrl)){
+            return $favIconUrl;
+        } else {
+            return null;
+        }
+    }
+
     public function accipio_custom_breadcrumb(){
         global $CFG, $PAGE, $DB;
         $html = '';
@@ -260,7 +271,7 @@ class core_renderer extends \core_renderer {
             $course_obj = new core_course_list_element($course);
         }
 
-        $headerimage_url = 'https://www.businessballs.com/pluginfile.php/1/theme_accipio_bb/slideimage/0/home.jpg';
+        $headerimage_url = '/theme/master/pix/home.jpg';
 
 
         foreach ($course_obj->get_course_overviewfiles() as $file) {
@@ -573,7 +584,7 @@ class core_renderer extends \core_renderer {
         }
 
         $output .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "\n";
-        $output .= '<meta name="keywords" content="moodle, ' . $this->page->title . '" />' . "\n";
+//        $output .= '<meta name="keywords" content="moodle, ' . $this->page->title . '" />' . "\n";
         // This is only set by the {@link redirect()} method
         $output .= $this->metarefreshtag;
 
@@ -660,11 +671,11 @@ class core_renderer extends \core_renderer {
         global $CFG;
         $output = '';
 
-        if(is_siteadmin()){
+//        if(is_siteadmin()){
             $output = $this->page->requires->get_top_of_body_code($this);
-        } else {
-            $output = $this->get_top_of_body_code();
-        }
+//        } else {
+//            $output = $this->get_top_of_body_code();
+//        }
 
         if ($this->page->pagelayout !== 'embedded' && !empty($CFG->additionalhtmltopofbody)) {
             $output .= "\n".$CFG->additionalhtmltopofbody;
@@ -707,5 +718,218 @@ class core_renderer extends \core_renderer {
         $output .= '<script defer type="text/javascript" src="https://beta.businessballs.com/theme/yui_combo.php?m/1586538764/core/event/event-debug-min.js&m/1586538764/filter_mathjaxloader/loader/loader-debug-min.js"></script>';
         $output .= '<script defer type="text/javascript" src="https://beta.businessballs.com/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script>';
         return $output;
+    }
+
+    /**
+     * Returns the HTML shareblock with facebook/twitter/linkedIn (imt)
+     */
+    public function shareBlock() {
+        global $PAGE;
+
+        $output = '';
+
+        $output .=  html_writer::start_tag('div', array('class'=>'socialMediaShare'));
+
+        $output .=  html_writer::start_tag('div', array('class'=>'faceBookShareContainer shareContainer',
+            'onclick'=>"window.open('https://www.facebook.com/sharer/sharer.php?u=$PAGE->url')"));
+        $output .=  html_writer::start_tag('i', array('class'=>'fab fa-facebook-f shareIcons'));
+        $output .=  html_writer::end_tag('i');
+        $output .=  html_writer::end_tag('div'); //facebook share div end
+
+        $output .=  html_writer::start_tag('div', array('class'=>'twitterShareContainer shareContainer',
+            'onclick'=>"window.open('https://twitter.com/intent/tweet?text=This%20BusinessBalls%20resource%20is%20interesting%20$PAGE->url')"));
+        $output .=  html_writer::start_tag('i', array('class'=>'fab fa-twitter shareIcons'));
+        $output .=  html_writer::end_tag('i');
+        $output .=  html_writer::end_tag('div'); //twitter share div end
+
+        $output .=  html_writer::start_tag('div', array('class'=>'linkedInShareContainer shareContainer',
+            'onclick'=>"window.open('https://www.linkedin.com/shareArticle?mini=true&url=$PAGE->url')"));
+        $output .=  html_writer::start_tag('i', array('class'=>'fab fa-linkedin-in shareIcons'));
+        $output .=  html_writer::end_tag('i');
+        $output .=  html_writer::end_tag('div'); //linkedIn share div end
+
+        $output .=  html_writer::start_tag('div', array('class'=>'printShareContainer shareContainer',
+            'onclick'=>"window.open('https://www.addtoany.com/add_to/printfriendly?linkurl=$PAGE->url')"));
+        $output .=  html_writer::start_tag('i', array('class'=>'fas fa-print shareIcons'));
+        $output .=  html_writer::end_tag('i');
+        $output .=  html_writer::end_tag('div'); //print share div end
+
+        $output .=  html_writer::start_tag('div', array('class'=>'mailShareContainer shareContainer',
+            'onclick'=>"window.open('mailto:example@example.com?subject=This%20BusinessBalls%20article%20looks%20interesting&body=Hi%2C%0A%0AI%20found%20this%20BusinessBalls%20resource%20and%20I%20thought%20to%20share%20it%20with%20you.%20%0A%0A$PAGE->url')"));
+        $output .=  html_writer::start_tag('i', array('class'=>'fas fa-envelope shareIcons'));
+        $output .=  html_writer::end_tag('i');
+        $output .=  html_writer::end_tag('div'); //print share div end
+
+        $output .=  html_writer::end_tag('div'); //socialMediaShare div end
+
+        return $output;
+    }
+
+
+    public function standard_footer_html() {
+        global $CFG, $SCRIPT;
+
+        $output = '';
+        if (during_initial_install()) {
+            // Debugging info can not work before install is finished,
+            // in any case we do not want any links during installation!
+            return $output;
+        }
+
+        // Give plugins an opportunity to add any footer elements.
+        // The callback must always return a string containing valid html footer content.
+        $pluginswithfunction = get_plugins_with_function('standard_footer_html', 'lib.php');
+        foreach ($pluginswithfunction as $plugins) {
+            foreach ($plugins as $function) {
+                $output .= $function();
+            }
+        }
+
+        // This function is normally called from a layout.php file in {@link core_renderer::header()}
+        // but some of the content won't be known until later, so we return a placeholder
+        // for now. This will be replaced with the real content in {@link core_renderer::footer()}.
+        $output .= $this->unique_performance_info_token;
+        if ($this->page->devicetypeinuse == 'legacy') {
+            // The legacy theme is in use print the notification
+            $output .= html_writer::tag('div', get_string('legacythemeinuse'), array('class'=>'legacythemeinuse'));
+        }
+
+        // Get links to switch device types (only shown for users not on a default device)
+        $output .= $this->theme_switch_links();
+        if (!empty($CFG->sitepolicyhandler)
+            && $CFG->sitepolicyhandler == 'tool_policy') {
+            $policies = api::get_current_versions_ids();
+            if (!empty($policies)) {
+                $url = new moodle_url('/admin/tool/policy/viewall.php', ['returnurl' => $PAGE->url]);
+                $output .= html_writer::link($url, get_string('userpolicysettings', 'tool_policy'));
+                $output = html_writer::div($output, 'policiesfooter');
+            }
+        }
+        return $output;
+    }
+
+//    public static function get_meta($type){
+//        global $DB, $PAGE, $CFG;
+//        $item = null;
+//        if(fnmatch($CFG->wwwroot . '/blog/', $PAGE->url)){
+//            $item = '<title>Blog - BusinessBalls.com, Insights on Leadership & Management</title>';
+//        } else if(fnmatch($CFG->wwwroot . '/blog/*/', $PAGE->url)){
+//            //Blog Post State
+//            $params = explode('/blog/', $PAGE->url);
+//            $blogid = $DB->get_record('post', array('idnumber' => substr($params[1], 0, -1)))->id;
+//            $item = trim($DB->get_record('cus_headcontent', array('moduleid' => $blogid, 'tagtype' => $type))->value, "'");
+//        } else if($PAGE->cm->id !== null && $PAGE->cm->id > 0){
+//            //Course Module State
+//            if($type === 'meta') {
+//                $record = $DB->get_record('a1_rank', array('cmid' => $PAGE->cm->id));
+//                $item = '<meta name="description" content="' . $record->description . '">';
+//                $item .= '<title>' . $record->titletag . '</title>';
+//                $item .= '<meta name="description" content="' . $record->keywords . '">';
+//            } else{$item .= trim($DB->get_record('cus_headcontent', array('cmid' => $PAGE->cm->id, 'tagtype' => 'cronical'))->value, "'");}
+//
+//        } else if($PAGE->cm->id == null && $PAGE->course->id > 1){
+//            //Course State
+//            if($type === 'meta') {
+//                $record = $DB->get_record('a1_rank', array('courseid' => $PAGE->course->id, 'cmid' => null));
+//                $item = '<meta name="description" content="' . $record->description . '">';
+//                $item .= '<title>' . $record->titletag . '</title>';
+//                $item .= '<meta name="description" content="' . $record->keywords . '">';
+//            } else{$item .= trim($DB->get_record('cus_headcontent', array('courseid' => $PAGE->course->id, 'cmid' => null, 'tagtype' => 'cronical'))->value, "'");}
+//
+//        } else if($PAGE->category->id > 1){
+//            //Course Category State
+//            if($type === 'meta') {
+//                $record = $DB->get_record('a1_rank', array('categoryid' => $PAGE->category->id, 'courseid' => null));
+//                $item = '<meta name="description" content="' . $record->description . '">';
+//                $item .= '<title>' . $record->titletag . '</title>';
+//                $item .= '<meta name="description" content="' . $record->keywords . '">';
+//            }else{$item .= trim($DB->get_record('cus_headcontent', array('categoryid' => $PAGE->category->id, 'courseid' => null, 'tagtype' => 'cronical'))->value, "'");}
+//
+//        } else {
+//            if($type === 'meta'){
+//                $item = "<title>" . $PAGE->title . "</title>";
+//            } else if ($type === 'cronical'){
+//                $item ="<link rel='canonical' href='$PAGE->url'>";
+//            }
+//        }
+//        return $item;
+//    }
+
+public static function get_a1_rank(){
+        global $DB, $PAGE, $CFG;
+
+        $headerElements = null;
+
+        if(fnmatch($CFG->wwwroot . '/blog/', $PAGE->url)){
+            //Blog landing page
+            $headerElements = '<title>Blog - BusinessBalls.com, Insights on Leadership & Management</title>';
+
+        }else if($PAGE->cm->id !== null && $PAGE->cm->id > 0){
+            //Module Setter
+            // Check if record exists in DB with empty()
+            // If record does not exist pass fall-back variables
+            //Otherwise pass on record value from DB
+           $get_record = $DB->get_record('a1_rank', array('cmid' => $PAGE->cm->id));
+
+           empty($get_record->titletag) ?  $headerElements = '<title>' . $PAGE->title . '</title>' : $headerElements = '<title>' . $get_record->titletag . '</title>';
+           empty($get_record->description) ? $headerElements .= '<meta name="description" content="' . $PAGE->title .'">' : $headerElements .= '<meta name="description" content="' . $get_record->description . '">';
+           empty($get_record->keywords) ? $headerElements .= '<meta name="keywords" content="' . $PAGE->title . '">' : $headerElements .= '<meta name="description" content="' . $get_record->keywords .'">';
+           empty($get_record->cleanurl) ? $headerElements .= '<link rel="canonical" href="' . $PAGE->url . '">' : $headerElements .= '<link rel="canonical" href="' . $get_record->cleanurl . '">';
+        }else if($PAGE->cm->id == null && $PAGE->course->id > 1){
+            //Course Setter
+            $get_record = $DB->get_record('a1_rank', array('courseid' => $PAGE->course->id, 'cmid' => null));
+
+            empty($get_record->titletag) ?  $headerElements = '<title>' . $PAGE->title . '</title>' : $headerElements = '<title>' . $get_record->titletag . '</title>';
+            empty($get_record->description) ? $headerElements .= '<meta name="description" content="' . $PAGE->title .'">' : $headerElements .= '<meta name="description" content="' . $get_record->description . '">';
+            empty($get_record->keywords) ? $headerElements .= '<meta name="keywords" content="' . $PAGE->title . '">' : $headerElements .= '<meta name="description" content="' . $get_record->keywords .'">';
+            empty($get_record->cleanurl) ? $headerElements .= '<link rel="canonical" href="' . $PAGE->url . '">' : $headerElements .= '<link rel="canonical" href="' . $get_record->cleanurl . '">';
+        }else if($PAGE->category->id > 1){
+            //Category Setter
+            $get_record = $DB->get_record('a1_rank', array('categoryid' => $PAGE->category->id, 'courseid' => null));
+
+            empty($get_record->titletag) ?  $headerElements = '<title>' . $PAGE->title . '</title>' : $headerElements = '<title>' . $get_record->titletag . '</title>';
+            empty($get_record->description) ? $headerElements .= '<meta name="description" content="' . $PAGE->title .'">' : $headerElements .= '<meta name="description" content="' . $get_record->description . '">';
+            empty($get_record->keywords) ? $headerElements .= '<meta name="keywords" content="' . $PAGE->title . '">' : $headerElements .= '<meta name="description" content="' . $get_record->keywords .'">';
+            empty($get_record->cleanurl) ? $headerElements .= '<link rel="canonical" href="' . $PAGE->url . '">' : $headerElements .= '<link rel="canonical" href="' . $get_record->cleanurl . '">';
+        }
+
+        return $headerElements;
+}
+
+    public static function get_meta($type){
+        global $DB, $PAGE, $CFG;
+        $item = null;
+        if(fnmatch($CFG->wwwroot . '/blog/', $PAGE->url)){
+            echo '<title>Blog - BusinessBalls.com, Insights on Leadership & Management</title>';
+        } else if(fnmatch($CFG->wwwroot . '/blog/*/', $PAGE->url)){
+            //Blog Post State
+            $reflector = new \ReflectionClass($PAGE->url);
+            $classProperty = $reflector->getProperty('params');
+            $classProperty->setAccessible(true);
+            $data = $classProperty->getValue($PAGE->url);
+
+            $record = trim($DB->get_record('cus_headcontent', array('moduleid' => strval($data['entryid']), 'tagtype' => $type))->value, "'");
+
+            empty($record) ?  $item = '<title>' . $PAGE->title . '</title>' . '<link rel="canonical" href="' . $PAGE->url . '">' . '<meta name="description" content="' . $PAGE->title .'">' : $item = $record;
+
+
+
+        } else if($PAGE->cm->id !== null && $PAGE->cm->id > 0){
+            //Course Module State
+            $item = trim($DB->get_record('cus_headcontent', array('cmid' => $PAGE->cm->id, 'tagtype' => $type))->value, "'");
+        } else if($PAGE->cm->id == null && $PAGE->course->id > 1){
+            //Course State
+            $item = trim($DB->get_record('cus_headcontent', array('courseid' => $PAGE->course->id, 'cmid' => null, 'tagtype' => $type))->value, "'");
+        } else if($PAGE->category->id > 1){
+            //Course Category State
+            $item = trim($DB->get_record('cus_headcontent', array('categoryid' => $PAGE->category->id, 'courseid' => null, 'tagtype' => $type))->value, "'");
+        } else {
+            if($type === 'meta'){
+                $item = '<title>' . $PAGE->title . '</title>';
+            } else if ($type === 'cronical'){
+                $item ="<link rel='canonical' href='$PAGE->url'>";
+            }
+        }
+        return $item;
     }
 }

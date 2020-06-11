@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 1rem;
+  background: #f1f4f5;
 }
 
 @font-face {
@@ -20,10 +21,42 @@ body {
 main.main {
   position: relative;
   height: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+
+  @media (min-width: 675px){
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 20px;
+
+  }
 }
 
 .container{
   @media (min-width: 1440px) {
     max-width: 1400px;
+  }
+}
+
+
+// getting rid of icons used for indent
+svg[data-icon="null"] {
+  display: none;
+}
+// getting rid of icons used for indent
+
+.icon{
+  font-family: FontAwesome !important;
+}
+
+.no-overflow {
+  overflow: hidden!important;
+  /* margin: 0!important; */
+}
+//TO DO, fix diagnose html structure so alerts place themselves below nav
+#page-mod-diagnose-edit-survey, .page-mod-diagnose-edit-survey{
+  #alert-container{
+    top: 100px !important;
   }
 }
